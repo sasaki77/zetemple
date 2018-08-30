@@ -19,7 +19,7 @@ def create_items(hosts, item_keys, interval, func=None):
             item['host'] = hostname
             item['item_key'] = item_key
             lastname = item_key.split('.')[-1]
-            item['pv'] = ':'.join([prefix, lastname.upper()])
+            item['pv'] = prefix + lastname
             item['interval'] = interval
             item['func'] = func
             items.append(item)
