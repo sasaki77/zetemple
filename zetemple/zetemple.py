@@ -4,7 +4,7 @@ import os
 from zbxepics import ZabbixSenderCA
 from zbxepics.logging import logger
 
-from .reader import SenderConfigReaderCSV
+from .reader import read_config
 from .zbxsenderapi import ZabbixSenderAPI
 
 
@@ -15,11 +15,12 @@ def create_items(hosts, item_keys, interval, func=None):
         hostname = host['name']
         prefix = host['prefix']
         for item_key in item_keys:
+            pvname = item_key.split('.')[-1]
+
             item = {}
             item['host'] = hostname
             item['item_key'] = item_key
-            lastname = item_key.split('.')[-1]
-            item['pv'] = prefix + lastname
+            item['pv'] = prefix + pvname
             item['interval'] = interval
             item['func'] = func
             items.append(item)
@@ -80,8 +81,7 @@ def main():
 
     logger.set_config(args.logconfig)
 
-    csv_reader = SenderConfigReaderCSV()
-    hosts = csv_reader.read_config(args.file)
+    hosts = read_config(args.file)
 
     zbx_url = args.zbx_url
     zbx_user = args.zbx_user
