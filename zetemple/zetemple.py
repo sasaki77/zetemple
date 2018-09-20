@@ -41,7 +41,7 @@ def parseArgs():
     default_logcnf = os.path.join(dir_path, 'logging.conf')
 
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('-f', '-file', dest="file",
+    parser.add_argument('-f', '-file', dest='file',
                         required=True, help='CSV file')
     parser.add_argument('-s', '--server', dest='server',
                         default=default_server,
@@ -50,7 +50,7 @@ def parseArgs():
     parser.add_argument('-t', '--template', dest='template',
                         required=True, help='Zabbix template name.',
                         metavar='PASSWORD')
-    parser.add_argument('-p', '--port', dest="port",
+    parser.add_argument('-p', '--port', dest='port',
                         default=default_port, type=int,
                         help='Zabbix server port.', metavar=default_port)
     parser.add_argument('-i', '--interval', dest='interval',
