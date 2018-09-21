@@ -15,7 +15,7 @@ def create_items(hosts, item_keys, interval, func=None):
         hostname = host['name']
         prefix = host['prefix']
         for item_key in item_keys:
-            pvname = item_key.split('.')[-1]
+            pvname = __parse_item_key(item_key)
 
             item = {}
             item['host'] = hostname
@@ -26,6 +26,25 @@ def create_items(hosts, item_keys, interval, func=None):
             items.append(item)
 
     return items
+
+
+def __parse_item_key(item_key):
+    splited_key = item_key.split('.')
+
+    if 'pv' not in splited_key:
+        # ex) item_key = comma.PV:NAME
+        return splited_key[-1]
+
+    index = splited_key.index('pv')
+
+    if splited_key[index] is splited_key[-1]:
+        # ex) item_key = commma.separated.pv
+        pvname = 'pv'
+    else:
+        # ex) item_key = commma.pv.PV:NAME
+        pvname = '.'.join(splited_key[index+1:])
+
+    return pvname
 
 
 def parseArgs():

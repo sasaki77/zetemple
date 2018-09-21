@@ -9,6 +9,10 @@ ex.1) `PV:name`
 
 ex.2) `comma.separated.PV:name`
 
+If the item key has `pv`, characters that follows `pv` are used as PV name.
+
+ex.3) `comma.separated.pv.PV:name.field`
+
 ## installing
 
 Simple install is below.

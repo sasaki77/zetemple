@@ -37,3 +37,14 @@ def test_create_items(item_source):
     items = zetemple.create_items(hosts, item_keys, interval, func)
 
     assert items == item_source['items']
+
+
+@pytest.mark.parametrize('key,pvname', [
+    ('key1', 'key1'),
+    ('comma.KEY2', 'KEY2'),
+    ('comma.pv.KEY.FIELD', 'KEY.FIELD'),
+    ('comma.pv', 'pv')
+])
+def test_parse_item_key(key, pvname):
+    _pvname = zetemple.__parse_item_key(key)
+    assert pvname == _pvname
