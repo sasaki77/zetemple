@@ -3,15 +3,15 @@ This package provides executable script to send metrics to Zabbix server from EP
 
 PV names are obtained from template of Zabbix to monitor EPICS PVs.
 
-The Item key of Zabbix template are must be PV name or last part of comma separated key as follow.
+The Item key of Zabbix template are must begin with "zetemple.". PV name must follow "zetemple." or last part of comma separated key as follow.
 
-ex.1) `PV:name`
+ex.1) `zetemple.PV:name`
 
-ex.2) `comma.separated.PV:name`
+ex.2) `zetemple.comma.separated.PV:name`
 
 If the item key has `pv`, characters that follows `pv` are used as PV name.
 
-ex.3) `comma.separated.pv.PV:name.field`
+ex.3) `zetemple.comma.separated.pv.PV:name.field`
 
 ## installing
 

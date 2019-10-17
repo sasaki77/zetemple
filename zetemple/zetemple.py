@@ -17,6 +17,9 @@ def create_items(hosts, item_keys, interval, func=None):
         for item_key in item_keys:
             pvname = __parse_item_key(item_key)
 
+            if not pvname:
+                continue
+
             item = {}
             item['host'] = hostname
             item['item_key'] = item_key
@@ -31,17 +34,20 @@ def create_items(hosts, item_keys, interval, func=None):
 def __parse_item_key(item_key):
     splited_key = item_key.split('.')
 
+    if splited_key[0].lower() != 'zetemple':
+        return None
+
     if 'pv' not in splited_key:
-        # ex) item_key = comma.PV:NAME
+        # ex) item_key = zetemple.comma.PV:NAME
         return splited_key[-1]
 
     index = splited_key.index('pv')
 
     if splited_key[index] is splited_key[-1]:
-        # ex) item_key = commma.separated.pv
+        # ex) item_key = zetemple.commma.separated.pv
         pvname = 'pv'
     else:
-        # ex) item_key = commma.pv.PV:NAME
+        # ex) item_key = zetemple.commma.pv.PV:NAME
         pvname = '.'.join(splited_key[index+1:])
 
     return pvname
