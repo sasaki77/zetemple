@@ -21,6 +21,13 @@ setup(
     zip_safe=False,
     install_requires=[
     ],
+    extras_require={
+        'develop': [
+            'pytest',
+            'pytest-cov',
+            'pycodestyle'
+            ]
+    },
     entry_points={
         'console_scripts': ['zetemple=zetemple.zetemple:main'],
     },

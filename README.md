@@ -61,3 +61,21 @@ optional arguments:
   -l LOGCONFIG, --logconfig LOGCONFIG
                         logging config file path.
 ```
+
+## Test
+
+Install packages for develop
+```bash
+pip install -e .[develop]
+```
+
+Run without coverage:
+```bash
+pytest
+```
+
+Run with coverage:
+```bash
+pytest --cov zetemple
+coverage report -m
+```
