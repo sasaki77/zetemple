@@ -18,7 +18,6 @@ ex.3) `zetemple.comma.separated.pv.PV:name.field`
 Simple install is below.
 
 ```bash
-pip install git+https://github.com/sasaki77/zabbix-epics-py.git
 pip install git+https://github.com/sasaki77/zetemple.git
 ```
 
@@ -37,15 +36,15 @@ pip install git+https://github.com/sasaki77/zetemple.git
 
 ```bash
 $ zetemple -h
-usage: zetemple [-h] -f FILE [-s localhost] -t PASSWORD [-p 10051] [-i 30]
-                [-F last] [-u URL] [-U USER] [-P PASSWORD] [-l LOGCONFIG]
+usage: zetemple [-h] -f FILE [-s localhost] -t TEMPLATE [-p 10051] [-i 30] [-F last] [-u URL] [-U USER] [-P PASSWORD]
+                [-l LOGCONFIG]
 
 optional arguments:
   -h, --help            show this help message and exit
   -f FILE, -file FILE   CSV file
   -s localhost, --server localhost
                         Zabbix server ip address.
-  -t PASSWORD, --template PASSWORD
+  -t TEMPLATE, --template TEMPLATE
                         Zabbix template name.
   -p 10051, --port 10051
                         Zabbix server port.

@@ -74,7 +74,7 @@ def parseArgs():
                         metavar=default_server)
     parser.add_argument('-t', '--template', dest='template',
                         required=True, help='Zabbix template name.',
-                        metavar='PASSWORD')
+                        metavar='TEMPLATE')
     parser.add_argument('-p', '--port', dest='port',
                         default=default_port, type=int,
                         help='Zabbix server port.', metavar=default_port)
