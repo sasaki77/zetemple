@@ -8,7 +8,7 @@ with open('LICENSE') as f:
 
 setup(
     name='zetemple',
-    version='0.0.1',
+    version='1.0.0',
     url='https://github.com/sasaki77/zetemple',
     license=license,
     maintainer='Shinya Sasaki',
@@ -20,7 +20,8 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'zabbix-epics-py'
+        'zabbix_utils',
+        'zabbix-epics-py',
     ],
     extras_require={
         'develop': [
